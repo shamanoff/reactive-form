@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
   save(): void {
     console.log(this.loginForm);
     console.log('Saved: ' + JSON.stringify(this.loginForm.value));
+    this.loginForm.reset();
   }
 
 }
