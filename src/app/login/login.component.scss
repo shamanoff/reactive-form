@@ -1,4 +1,19 @@
 .has-error{
   border: 1px solid tomato;
   color: tomato;
+
+}
+.error{
+  color: tomato;
+  //position: absolute;
+  margin-top:-5px;
+}
+.fields{
+  //min-height:70px;
+  border: 1px solid gainsboro;
+  padding:2rem;
+}
+.fields input{
+  margin:0;
+
 }

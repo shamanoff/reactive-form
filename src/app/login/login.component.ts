@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
   passwordMessage: string;
 
   private validationMessages = {
-    required: 'Email address is required.',
-    minlength: 'Must be under 3.',
+    required: 'This field is required.',
+    minlength: 'Must be longer than three characters.',
     email: 'Please enter a valid email address.'
   };
 
@@ -27,17 +27,19 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.email, Validators.required, Validators.minLength(3) ] ],
-      // password: ['', [Validators.required, Validators.minLength(3)] ]
+      password: ['', [Validators.required, Validators.minLength(3)] ]
     });
     const emailControl = this.loginForm.get('email');
-
     emailControl.valueChanges.debounceTime(1000).subscribe(
-      value => this.setMessage(emailControl)
+      value => this.setEmailMessage(emailControl)
+    );
+    const passwordControl = this.loginForm.get('password');
+    passwordControl.valueChanges.debounceTime(1000).subscribe(
+      value => this.setPasswordMessage(passwordControl)
     );
   }
 
-  setMessage(c: AbstractControl): void {
-
+  setEmailMessage(c: AbstractControl): void {
     this.emailMessage = '';
     if ((c.touched || c.dirty) && c.errors) {
       this.emailMessage = Object.keys(c.errors)
@@ -47,6 +49,15 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  setPasswordMessage(c: AbstractControl): void {
+    this.passwordMessage = '';
+    if ((c.touched || c.dirty) && c.errors) {
+      this.passwordMessage = Object.keys(c.errors)
+        .map(key => this.validationMessages[key])
+        .join(' ');
+      console.log(Object.keys(c.errors));
+    }
+  }
   save(): void {
     console.log(this.loginForm);
     console.log('Saved: ' + JSON.stringify(this.loginForm.value));
