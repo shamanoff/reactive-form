@@ -1,0 +1,42 @@
+<h2>Log in</h2>
+<!--form-->
+<form novalidate
+      (ngSubmit)="save()"
+      [formGroup]="loginForm">
+  <!--email-->
+    <div  [ngClass]="{'has-error': emailMessage}" >
+      <input class="form-control"
+             id="emailId"
+             type="email"
+             placeholder="Email"
+             formControlName="email"
+            >
+      <!--error-->
+      <span class="help-block" *ngIf="emailMessage">{{ emailMessage }}</span>
+    </div>
+
+  <!--password-->
+
+  <!--button-->
+  <button type="submit" class="button" [disabled]="!loginForm.valid">
+    Log In
+  </button>
+</form>
+
+
+
+
+
+<!--
+<div formGroupName="emailGroup" [ngClass]="{'has-error': loginForm.get('emailGroup').errors }">
+  <div [ngClass]="{'has-error': emailMessage}">
+    <input class="form-control"
+           id="emailId"
+           type="email"
+           placeholder="Email"
+           formControlName="email">
+    &lt;!&ndash;error&ndash;&gt;
+    <span class="help-block" *ngIf="emailMessage">
+                                {{ emailMessage }}</span>
+  </div>
+</div>-->

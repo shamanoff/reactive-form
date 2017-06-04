@@ -7,17 +7,20 @@ import { AppComponent } from './app.component';
 import { CustomersComponent } from './customers/customers.component';
 import { SignupComponent } from './signup/signup.component';
 import {RouterModule, Routes} from "@angular/router";
+import { LoginComponent } from './login/login.component';
 
 
 const appRoutes: Routes = [
   {path: '', component: CustomersComponent},
   {path: 'signup', component: SignupComponent},
+  {path: 'login', component: LoginComponent}
 ];
 @NgModule({
   declarations: [
     AppComponent,
     CustomersComponent,
-    SignupComponent
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
