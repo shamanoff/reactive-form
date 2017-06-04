@@ -22,10 +22,10 @@ export class LoginComponent implements OnInit {
     email: 'Please enter a valid email address.'
   };
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private _fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
+    this.loginForm = this._fb.group({
       email: ['', [Validators.email, Validators.required, Validators.minLength(3) ] ],
       password: ['', [Validators.required, Validators.minLength(3)] ]
     });
